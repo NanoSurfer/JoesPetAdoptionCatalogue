@@ -9,14 +9,24 @@ namespace JoesPetShop
     {
         private string name;
         private string breed;
-        private int age;
+        private double age;
         private string gender;
         private string color;
 
-        public Animal(string aName, string aBreed, int aAge, string aGender, string aColor)
+        //Constructor for a pure bred animal
+        public Animal(string aName, string aBreed, double aAge, string aGender, string aColor)
         {
             name = aName;
             breed = aBreed;
+            age = aAge;
+            gender = aGender;
+            color = aColor;
+        }
+
+        //Constructor for a non pure bred animal
+        public Animal(string aName, double aAge, string aGender, string aColor)
+        {
+            name = aName;
             age = aAge;
             gender = aGender;
             color = aColor;
@@ -34,7 +44,7 @@ namespace JoesPetShop
             set { breed = value; }
         }
 
-        public int Age
+        public double Age
         {
             get { return age; }
             set { age = value; }
@@ -50,6 +60,20 @@ namespace JoesPetShop
         {
             get { return color; }
             set { color = value; }
+        }
+
+        public override string ToString()
+        {
+            if (breed == null)
+            {
+               return "Name: " + name.ToString() + "Age: " + age.ToString() + "Gender: "
+                    + gender.ToString() + "Colour: " + color.ToString();
+            }
+            else
+            {
+               return " Name: " + name.ToString() + " Age: " + age.ToString() + " Breed: " + breed.ToString() + " Gender: "
+                    + gender.ToString() + " Colour: " + color.ToString();
+            }
         }
     }
 }

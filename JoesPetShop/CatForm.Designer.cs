@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.grpBxDetails = new System.Windows.Forms.GroupBox();
+            this.txtBxColor = new System.Windows.Forms.TextBox();
+            this.chkBxPureBreed = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbBxBreed = new System.Windows.Forms.ComboBox();
             this.rbFemale = new System.Windows.Forms.RadioButton();
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.txtBxAge = new System.Windows.Forms.TextBox();
@@ -36,14 +40,11 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
             this.lblColor = new System.Windows.Forms.Label();
+            this.lblBreed = new System.Windows.Forms.Label();
             this.lblGender = new System.Windows.Forms.Label();
+            this.grpBxGender = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAddToCatalog = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkBxPureBreed = new System.Windows.Forms.CheckBox();
-            this.cmboBxBreed = new System.Windows.Forms.ComboBox();
-            this.lblBreed = new System.Windows.Forms.Label();
-            this.txtBxColor = new System.Windows.Forms.TextBox();
             this.grpBxDetails.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +54,7 @@
             this.grpBxDetails.Controls.Add(this.txtBxColor);
             this.grpBxDetails.Controls.Add(this.chkBxPureBreed);
             this.grpBxDetails.Controls.Add(this.label1);
-            this.grpBxDetails.Controls.Add(this.cmboBxBreed);
+            this.grpBxDetails.Controls.Add(this.cmbBxBreed);
             this.grpBxDetails.Controls.Add(this.rbFemale);
             this.grpBxDetails.Controls.Add(this.rbMale);
             this.grpBxDetails.Controls.Add(this.txtBxAge);
@@ -63,6 +64,7 @@
             this.grpBxDetails.Controls.Add(this.lblColor);
             this.grpBxDetails.Controls.Add(this.lblBreed);
             this.grpBxDetails.Controls.Add(this.lblGender);
+            this.grpBxDetails.Controls.Add(this.grpBxGender);
             this.grpBxDetails.Location = new System.Drawing.Point(12, 11);
             this.grpBxDetails.Name = "grpBxDetails";
             this.grpBxDetails.Size = new System.Drawing.Size(244, 233);
@@ -70,105 +72,12 @@
             this.grpBxDetails.TabStop = false;
             this.grpBxDetails.Text = "Details";
             // 
-            // rbFemale
+            // txtBxColor
             // 
-            this.rbFemale.AutoSize = true;
-            this.rbFemale.Location = new System.Drawing.Point(156, 161);
-            this.rbFemale.Name = "rbFemale";
-            this.rbFemale.Size = new System.Drawing.Size(59, 17);
-            this.rbFemale.TabIndex = 15;
-            this.rbFemale.TabStop = true;
-            this.rbFemale.Text = "Female";
-            this.rbFemale.UseVisualStyleBackColor = true;
-            // 
-            // rbMale
-            // 
-            this.rbMale.AutoSize = true;
-            this.rbMale.Location = new System.Drawing.Point(91, 161);
-            this.rbMale.Name = "rbMale";
-            this.rbMale.Size = new System.Drawing.Size(48, 17);
-            this.rbMale.TabIndex = 14;
-            this.rbMale.TabStop = true;
-            this.rbMale.Text = "Male";
-            this.rbMale.UseVisualStyleBackColor = true;
-            // 
-            // txtBxAge
-            // 
-            this.txtBxAge.Location = new System.Drawing.Point(91, 60);
-            this.txtBxAge.Name = "txtBxAge";
-            this.txtBxAge.Size = new System.Drawing.Size(49, 20);
-            this.txtBxAge.TabIndex = 8;
-            // 
-            // txtBxName
-            // 
-            this.txtBxName.Location = new System.Drawing.Point(91, 30);
-            this.txtBxName.Name = "txtBxName";
-            this.txtBxName.Size = new System.Drawing.Size(120, 20);
-            this.txtBxName.TabIndex = 7;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(46, 33);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Name:";
-            // 
-            // lblAge
-            // 
-            this.lblAge.AutoSize = true;
-            this.lblAge.Location = new System.Drawing.Point(56, 63);
-            this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(29, 13);
-            this.lblAge.TabIndex = 1;
-            this.lblAge.Text = "Age:";
-            // 
-            // lblColor
-            // 
-            this.lblColor.AutoSize = true;
-            this.lblColor.Location = new System.Drawing.Point(46, 198);
-            this.lblColor.Name = "lblColor";
-            this.lblColor.Size = new System.Drawing.Size(40, 13);
-            this.lblColor.TabIndex = 5;
-            this.lblColor.Text = "Colour:";
-            // 
-            // lblGender
-            // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(39, 163);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(45, 13);
-            this.lblGender.TabIndex = 3;
-            this.lblGender.Text = "Gender:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnAddToCatalog);
-            this.groupBox1.Location = new System.Drawing.Point(3, 250);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(263, 42);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Update";
-            // 
-            // btnAddToCatalog
-            // 
-            this.btnAddToCatalog.Location = new System.Drawing.Point(68, 14);
-            this.btnAddToCatalog.Name = "btnAddToCatalog";
-            this.btnAddToCatalog.Size = new System.Drawing.Size(126, 23);
-            this.btnAddToCatalog.TabIndex = 8;
-            this.btnAddToCatalog.Text = "Add to Catalogue";
-            this.btnAddToCatalog.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 97);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Pure Breed:";
+            this.txtBxColor.Location = new System.Drawing.Point(89, 207);
+            this.txtBxColor.Name = "txtBxColor";
+            this.txtBxColor.Size = new System.Drawing.Size(120, 20);
+            this.txtBxColor.TabIndex = 21;
             // 
             // chkBxPureBreed
             // 
@@ -181,12 +90,21 @@
             this.chkBxPureBreed.UseVisualStyleBackColor = true;
             this.chkBxPureBreed.CheckedChanged += new System.EventHandler(this.chkBxPureBreed_CheckedChanged);
             // 
-            // cmboBxBreed
+            // label1
             // 
-            this.cmboBxBreed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmboBxBreed.Enabled = false;
-            this.cmboBxBreed.FormattingEnabled = true;
-            this.cmboBxBreed.Items.AddRange(new object[] {
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Pure Breed:";
+            // 
+            // cmbBxBreed
+            // 
+            this.cmbBxBreed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBxBreed.Enabled = false;
+            this.cmbBxBreed.FormattingEnabled = true;
+            this.cmbBxBreed.Items.AddRange(new object[] {
             "Abyssinian",
             "American Bobtail",
             "American Curl",
@@ -239,10 +157,73 @@
             "Tonkinese",
             "Turkish Angora",
             "Turkish Van "});
-            this.cmboBxBreed.Location = new System.Drawing.Point(91, 133);
-            this.cmboBxBreed.Name = "cmboBxBreed";
-            this.cmboBxBreed.Size = new System.Drawing.Size(139, 21);
-            this.cmboBxBreed.TabIndex = 17;
+            this.cmbBxBreed.Location = new System.Drawing.Point(91, 133);
+            this.cmbBxBreed.Name = "cmbBxBreed";
+            this.cmbBxBreed.Size = new System.Drawing.Size(139, 21);
+            this.cmbBxBreed.TabIndex = 17;
+            // 
+            // rbFemale
+            // 
+            this.rbFemale.AutoSize = true;
+            this.rbFemale.Location = new System.Drawing.Point(156, 172);
+            this.rbFemale.Name = "rbFemale";
+            this.rbFemale.Size = new System.Drawing.Size(59, 17);
+            this.rbFemale.TabIndex = 15;
+            this.rbFemale.TabStop = true;
+            this.rbFemale.Text = "Female";
+            this.rbFemale.UseVisualStyleBackColor = true;
+            // 
+            // rbMale
+            // 
+            this.rbMale.AutoSize = true;
+            this.rbMale.Location = new System.Drawing.Point(91, 172);
+            this.rbMale.Name = "rbMale";
+            this.rbMale.Size = new System.Drawing.Size(48, 17);
+            this.rbMale.TabIndex = 14;
+            this.rbMale.TabStop = true;
+            this.rbMale.Text = "Male";
+            this.rbMale.UseVisualStyleBackColor = true;
+            // 
+            // txtBxAge
+            // 
+            this.txtBxAge.Location = new System.Drawing.Point(91, 60);
+            this.txtBxAge.Name = "txtBxAge";
+            this.txtBxAge.Size = new System.Drawing.Size(49, 20);
+            this.txtBxAge.TabIndex = 8;
+            // 
+            // txtBxName
+            // 
+            this.txtBxName.Location = new System.Drawing.Point(91, 30);
+            this.txtBxName.Name = "txtBxName";
+            this.txtBxName.Size = new System.Drawing.Size(120, 20);
+            this.txtBxName.TabIndex = 7;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(46, 33);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(38, 13);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Name:";
+            // 
+            // lblAge
+            // 
+            this.lblAge.AutoSize = true;
+            this.lblAge.Location = new System.Drawing.Point(56, 63);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(29, 13);
+            this.lblAge.TabIndex = 1;
+            this.lblAge.Text = "Age:";
+            // 
+            // lblColor
+            // 
+            this.lblColor.AutoSize = true;
+            this.lblColor.Location = new System.Drawing.Point(46, 210);
+            this.lblColor.Name = "lblColor";
+            this.lblColor.Size = new System.Drawing.Size(40, 13);
+            this.lblColor.TabIndex = 5;
+            this.lblColor.Text = "Colour:";
             // 
             // lblBreed
             // 
@@ -253,12 +234,42 @@
             this.lblBreed.TabIndex = 2;
             this.lblBreed.Text = "Breed:";
             // 
-            // txtBxColor
+            // lblGender
             // 
-            this.txtBxColor.Location = new System.Drawing.Point(89, 195);
-            this.txtBxColor.Name = "txtBxColor";
-            this.txtBxColor.Size = new System.Drawing.Size(120, 20);
-            this.txtBxColor.TabIndex = 21;
+            this.lblGender.AutoSize = true;
+            this.lblGender.Location = new System.Drawing.Point(39, 174);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(45, 13);
+            this.lblGender.TabIndex = 3;
+            this.lblGender.Text = "Gender:";
+            // 
+            // grpBxGender
+            // 
+            this.grpBxGender.Location = new System.Drawing.Point(30, 160);
+            this.grpBxGender.Name = "grpBxGender";
+            this.grpBxGender.Size = new System.Drawing.Size(200, 35);
+            this.grpBxGender.TabIndex = 22;
+            this.grpBxGender.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnAddToCatalog);
+            this.groupBox1.Location = new System.Drawing.Point(3, 250);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(263, 42);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Update";
+            // 
+            // btnAddToCatalog
+            // 
+            this.btnAddToCatalog.Location = new System.Drawing.Point(68, 14);
+            this.btnAddToCatalog.Name = "btnAddToCatalog";
+            this.btnAddToCatalog.Size = new System.Drawing.Size(126, 23);
+            this.btnAddToCatalog.TabIndex = 8;
+            this.btnAddToCatalog.Text = "Add to Catalogue";
+            this.btnAddToCatalog.UseVisualStyleBackColor = true;
+            this.btnAddToCatalog.Click += new System.EventHandler(this.btnAddToCatalog_Click);
             // 
             // CatForm
             // 
@@ -295,8 +306,9 @@
         private System.Windows.Forms.Button btnAddToCatalog;
         private System.Windows.Forms.CheckBox chkBxPureBreed;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmboBxBreed;
+        private System.Windows.Forms.ComboBox cmbBxBreed;
         private System.Windows.Forms.Label lblBreed;
         private System.Windows.Forms.TextBox txtBxColor;
+        private System.Windows.Forms.GroupBox grpBxGender;
     }
 }

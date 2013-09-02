@@ -7,8 +7,15 @@ namespace JoesPetShop
 {
     class Cat : Animal
     {
-        public Cat(string aName, string aBreed, int aAge, string aGender, string aColor)
+        //Pure bred Cat constructor
+        public Cat(string aName, string aBreed, double aAge, string aGender, string aColor)
             : base(aName, aBreed, aAge, aGender, aColor)
+        {
+        }
+
+        //Non pure bred Cat constructor
+        public Cat(string aName, double aAge, string aGender, string aColor)
+            : base(aName, aAge, aGender, aColor)
         {
         }
     }
