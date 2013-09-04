@@ -34,6 +34,9 @@
             this.grpBxViewPet = new System.Windows.Forms.GroupBox();
             this.btnViewCatalog = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAll = new System.Windows.Forms.Button();
+            this.btnCats = new System.Windows.Forms.Button();
+            this.btnDogs = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCat = new System.Windows.Forms.Button();
             this.btnDog = new System.Windows.Forms.Button();
@@ -102,9 +105,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDogs = new System.Windows.Forms.Button();
-            this.btnCats = new System.Windows.Forms.Button();
-            this.btnAll = new System.Windows.Forms.Button();
             this.grpBoxWelcome.SuspendLayout();
             this.grpBxViewPet.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -153,9 +153,9 @@
             // 
             // btnViewCatalog
             // 
-            this.btnViewCatalog.Location = new System.Drawing.Point(35, 30);
+            this.btnViewCatalog.Location = new System.Drawing.Point(40, 24);
             this.btnViewCatalog.Name = "btnViewCatalog";
-            this.btnViewCatalog.Size = new System.Drawing.Size(141, 34);
+            this.btnViewCatalog.Size = new System.Drawing.Size(131, 35);
             this.btnViewCatalog.TabIndex = 0;
             this.btnViewCatalog.Text = "View Catalogue";
             this.btnViewCatalog.UseVisualStyleBackColor = true;
@@ -172,6 +172,33 @@
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Generate Reports";
+            // 
+            // btnAll
+            // 
+            this.btnAll.Location = new System.Drawing.Point(320, 14);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(75, 23);
+            this.btnAll.TabIndex = 2;
+            this.btnAll.Text = "All";
+            this.btnAll.UseVisualStyleBackColor = true;
+            // 
+            // btnCats
+            // 
+            this.btnCats.Location = new System.Drawing.Point(220, 14);
+            this.btnCats.Name = "btnCats";
+            this.btnCats.Size = new System.Drawing.Size(75, 23);
+            this.btnCats.TabIndex = 1;
+            this.btnCats.Text = "Cats";
+            this.btnCats.UseVisualStyleBackColor = true;
+            // 
+            // btnDogs
+            // 
+            this.btnDogs.Location = new System.Drawing.Point(117, 14);
+            this.btnDogs.Name = "btnDogs";
+            this.btnDogs.Size = new System.Drawing.Size(75, 23);
+            this.btnDogs.TabIndex = 0;
+            this.btnDogs.Text = "Dogs";
+            this.btnDogs.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -319,7 +346,7 @@
             this.grpBxCatalog.Size = new System.Drawing.Size(231, 278);
             this.grpBxCatalog.TabIndex = 5;
             this.grpBxCatalog.TabStop = false;
-            this.grpBxCatalog.Text = "Catalog";
+            this.grpBxCatalog.Text = "Catalogue";
             // 
             // menuStrip1
             // 
@@ -681,33 +708,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             // 
-            // btnDogs
-            // 
-            this.btnDogs.Location = new System.Drawing.Point(117, 14);
-            this.btnDogs.Name = "btnDogs";
-            this.btnDogs.Size = new System.Drawing.Size(75, 23);
-            this.btnDogs.TabIndex = 0;
-            this.btnDogs.Text = "Dogs";
-            this.btnDogs.UseVisualStyleBackColor = true;
-            // 
-            // btnCats
-            // 
-            this.btnCats.Location = new System.Drawing.Point(220, 14);
-            this.btnCats.Name = "btnCats";
-            this.btnCats.Size = new System.Drawing.Size(75, 23);
-            this.btnCats.TabIndex = 1;
-            this.btnCats.Text = "Cats";
-            this.btnCats.UseVisualStyleBackColor = true;
-            // 
-            // btnAll
-            // 
-            this.btnAll.Location = new System.Drawing.Point(320, 14);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(75, 23);
-            this.btnAll.TabIndex = 2;
-            this.btnAll.Text = "All";
-            this.btnAll.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -723,7 +723,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Joe\'s D&C Adoption Store Catalogue";
+            this.Text = "Joe\'s D&C Adoption Pet Catalogue";
             this.grpBoxWelcome.ResumeLayout(false);
             this.grpBxViewPet.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

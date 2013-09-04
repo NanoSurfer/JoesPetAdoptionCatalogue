@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grpBxDetails = new System.Windows.Forms.GroupBox();
             this.txtBxColor = new System.Windows.Forms.TextBox();
             this.chkBxPureBreed = new System.Windows.Forms.CheckBox();
@@ -42,9 +43,9 @@
             this.lblColor = new System.Windows.Forms.Label();
             this.lblBreed = new System.Windows.Forms.Label();
             this.lblGender = new System.Windows.Forms.Label();
-            this.grpBxGender = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAddToCatalog = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.grpBxDetails.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +65,6 @@
             this.grpBxDetails.Controls.Add(this.lblColor);
             this.grpBxDetails.Controls.Add(this.lblBreed);
             this.grpBxDetails.Controls.Add(this.lblGender);
-            this.grpBxDetails.Controls.Add(this.grpBxGender);
             this.grpBxDetails.Location = new System.Drawing.Point(12, 11);
             this.grpBxDetails.Name = "grpBxDetails";
             this.grpBxDetails.Size = new System.Drawing.Size(244, 233);
@@ -219,7 +219,7 @@
             // lblColor
             // 
             this.lblColor.AutoSize = true;
-            this.lblColor.Location = new System.Drawing.Point(46, 210);
+            this.lblColor.Location = new System.Drawing.Point(45, 210);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(40, 13);
             this.lblColor.TabIndex = 5;
@@ -243,27 +243,19 @@
             this.lblGender.TabIndex = 3;
             this.lblGender.Text = "Gender:";
             // 
-            // grpBxGender
-            // 
-            this.grpBxGender.Location = new System.Drawing.Point(30, 160);
-            this.grpBxGender.Name = "grpBxGender";
-            this.grpBxGender.Size = new System.Drawing.Size(200, 35);
-            this.grpBxGender.TabIndex = 22;
-            this.grpBxGender.TabStop = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnAddToCatalog);
-            this.groupBox1.Location = new System.Drawing.Point(3, 250);
+            this.groupBox1.Location = new System.Drawing.Point(12, 250);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(263, 42);
+            this.groupBox1.Size = new System.Drawing.Size(245, 43);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Update";
             // 
             // btnAddToCatalog
             // 
-            this.btnAddToCatalog.Location = new System.Drawing.Point(68, 14);
+            this.btnAddToCatalog.Location = new System.Drawing.Point(59, 14);
             this.btnAddToCatalog.Name = "btnAddToCatalog";
             this.btnAddToCatalog.Size = new System.Drawing.Size(126, 23);
             this.btnAddToCatalog.TabIndex = 8;
@@ -275,7 +267,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 302);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(269, 305);
             this.Controls.Add(this.grpBxDetails);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -309,6 +302,6 @@
         private System.Windows.Forms.ComboBox cmbBxBreed;
         private System.Windows.Forms.Label lblBreed;
         private System.Windows.Forms.TextBox txtBxColor;
-        private System.Windows.Forms.GroupBox grpBxGender;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

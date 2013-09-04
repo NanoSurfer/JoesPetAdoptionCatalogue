@@ -7,14 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace JoesPetShop
 {
     public partial class DogForm : Form
     {
+        //Variable for the ArrayList cat object
+        public ArrayList dogList = new ArrayList();
+
+        const String filename = "Animal.dat";
+
         public DogForm()
         {
             InitializeComponent();
+
+            // Create the ToolTip for the colour box
+            ToolTip myTip = new ToolTip();
+
+            // Set up the delays for the ToolTip.
+            myTip.AutoPopDelay = 7000;
+            myTip.InitialDelay = 50;
+            myTip.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            myTip.ShowAlways = true;
+
+            // Set up the ToolTip for the txtBxColor control.
+            myTip.IsBalloon = true;
+            myTip.SetToolTip(this.txtBxColor, "Please enter a color which best matches the discription of the Dog.\n\n" +
+                "eg: White, grey, brownish grey etc...");
         }
 
         private void chkBxPureBreed_CheckedChanged(object sender, EventArgs e)
@@ -113,12 +135,36 @@ namespace JoesPetShop
         {
             try
             {
-                FileStream filStream = new FileStream("Animal.bin", FileMode.Append);
+                FileStream filStream = new FileStream(filename, FileMode.Append);
                 BinaryWriter binWriter = new BinaryWriter(filStream);
 
-                binWriter.Write("001" + aDog.ToString());
-                binWriter.Close();
-                filStream.Close();
+                binWriter.Write(aDog.Name);
+                binWriter.Write(aDog.Age);
+                binWriter.Write(aDog.Gender);
+                binWriter.Write(aDog.Color);
+
+                if (aDog.Breed == null)
+                {
+                    aDog.Breed = "Mix breed";
+                    binWriter.Write(aDog.Breed);
+                    aDog.DogCatagory = "None";
+                    binWriter.Write(aDog.DogCatagory);
+                }
+                else
+                {
+                    binWriter.Write(aDog.Breed);
+                }
+
+                binWriter.Close(); // Close the writer
+                filStream.Close(); //Close the reader
+
+                ////Add items to the arrayList
+                dogList.Add(aDog.Name);
+                dogList.Add(aDog.Age);
+                dogList.Add(aDog.Gender);
+                dogList.Add(aDog.Color);
+                dogList.Add(aDog.Breed);
+                dogList.Add(aDog.DogCatagory);
             }
 
             //If an error arises, catch it
@@ -128,15 +174,28 @@ namespace JoesPetShop
                 this.Close();
             }
 
-            //Otherwise the saving is a success
-            MessageBox.Show("Saved succesfully");
+            //Success!
+            DialogResult dialogResult = MessageBox.Show("\tSaved succesfully!\n\nWould you like to save another?", "Saved Successfuly", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //Just get rid of it by clicking the button
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                // Serialize the arraylist to a binary file 
+                var serializer = new BinaryFormatter();
+                using (var stream = File.OpenWrite("dogData.dat"))
+                {
+                    serializer.Serialize(stream, dogList);
+                }
+                this.Hide();
+            }
 
             //Reset form
             txtBxName.Text = "";
             txtBxAge.Text = "";
             txtBxColor.Text = "";
             cmbBxBreed.SelectedIndex = -1;
-            cmBxCategory.SelectedIndex = -1;
             rbFemale.Checked = false;
             rbMale.Checked = false;
             chkBxPureBreed.Checked = false;

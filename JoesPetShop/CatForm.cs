@@ -7,19 +7,43 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace JoesPetShop
 {
     public partial class CatForm : Form
     {
+        //Variable for the gender
+        private string gender = "";
+
+        //Variable for the ArrayList cat object
+        public ArrayList catList = new ArrayList();
+
+        const String filename = "Animal.dat";
+
         public CatForm()
         {
             InitializeComponent();
+
+            // Create the ToolTip for the colour box
+            ToolTip myTip = new ToolTip();
+
+            // Set up the delays for the ToolTip.
+            myTip.AutoPopDelay = 7000;
+            myTip.InitialDelay = 50;
+            myTip.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            myTip.ShowAlways = true;
+
+            // Set up the ToolTip for the txtBxColor control.
+            myTip.IsBalloon = true;
+            myTip.SetToolTip(this.txtBxColor, "Please enter a color which best\n matches the discription of the Cat.\n\n" +
+                "eg: Brown, grey, brownish grey etc...");       
         }
 
         private void CatForm_Load(object sender, EventArgs e)
-        {
-
+        { 
         }
 
         private void chkBxPureBreed_CheckedChanged(object sender, EventArgs e)
@@ -39,9 +63,6 @@ namespace JoesPetShop
 
         private void btnAddToCatalog_Click(object sender, EventArgs e)
         {
-            //Variable for the gender
-            string gender = "";
-
             //Check to see if the age is below 0
             try
             {
@@ -116,12 +137,33 @@ namespace JoesPetShop
         {
             try
             {
-                FileStream filStream = new FileStream("Animal.bin", FileMode.Append);
+                FileStream filStream = new FileStream(filename, FileMode.Append);
                 BinaryWriter binWriter = new BinaryWriter(filStream);
 
-                binWriter.Write("002" + aCat.ToString());
-                binWriter.Close();
-                filStream.Close();
+                binWriter.Write(aCat.Name);
+                binWriter.Write(aCat.Age);
+                binWriter.Write(aCat.Gender);
+                binWriter.Write(aCat.Color);
+
+                if (aCat.Breed == null)
+                {
+                    aCat.Breed = "Mix breed";
+                    binWriter.Write(aCat.Breed);
+                }
+                else
+                {
+                    binWriter.Write(aCat.Breed);
+                }
+
+                binWriter.Close(); // Close the writer
+                filStream.Close(); //Close the reader
+
+                ////Add items to the arrayList
+                catList.Add(aCat.Name);
+                catList.Add(aCat.Age);
+                catList.Add(aCat.Gender);
+                catList.Add(aCat.Color);
+                catList.Add(aCat.Breed);
             }
 
             //If an error arises, catch it
@@ -131,7 +173,22 @@ namespace JoesPetShop
                 this.Close();
             }
 
-            MessageBox.Show("Saved succesfully");
+            //Success!
+            DialogResult dialogResult = MessageBox.Show("\tSaved succesfully!\n\nWould you like to save another?", "Saved Successfuly", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //Just get rid of it by clicking the button
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                // Serialize the arraylist to a binary file 
+                var serializer = new BinaryFormatter();
+                using (var stream = File.OpenWrite("catData.dat"))
+                {
+                    serializer.Serialize(stream, catList);
+                }
+                this.Hide();
+            }
 
             //Reset form
             txtBxName.Text = "";
@@ -140,7 +197,7 @@ namespace JoesPetShop
             cmbBxBreed.SelectedIndex = -1;
             rbFemale.Checked = false;
             rbMale.Checked = false;
-            chkBxPureBreed.Checked = false;
+            chkBxPureBreed.Checked = false;   
         }
     }
 }

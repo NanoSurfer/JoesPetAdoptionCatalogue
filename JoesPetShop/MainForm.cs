@@ -11,20 +11,22 @@ namespace JoesPetShop
 {
     public partial class MainForm : Form
     {
+        CatForm formCat = new CatForm();
+        DogForm formDog = new DogForm();
+        CatalogForm formCatalog = new CatalogForm();
+
         public MainForm()
         {
             InitializeComponent();
         }
 
         private void btnDog_Click(object sender, EventArgs e)
-        {
-            DogForm formDog = new DogForm();
+        {        
             formDog.ShowDialog();
         }
 
         private void btnCat_Click(object sender, EventArgs e)
-        {
-            CatForm formCat = new CatForm();
+        {           
             formCat.ShowDialog();
         }
 
@@ -35,7 +37,6 @@ namespace JoesPetShop
 
         private void btnViewCatalog_Click(object sender, EventArgs e)
         {
-            CatalogForm formCatalog = new CatalogForm();
             formCatalog.ShowDialog();
         }
     }
