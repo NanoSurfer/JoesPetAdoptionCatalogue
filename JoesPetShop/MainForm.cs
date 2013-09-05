@@ -18,6 +18,7 @@ namespace JoesPetShop
         public MainForm()
         {
             InitializeComponent();
+
         }
 
         private void btnDog_Click(object sender, EventArgs e)
@@ -38,6 +39,16 @@ namespace JoesPetShop
         private void btnViewCatalog_Click(object sender, EventArgs e)
         {
             formCatalog.ShowDialog();
+        }
+
+        private void btnDogs_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnCats_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("notepad.exe", "catReport.txt");
         }
     }
 }

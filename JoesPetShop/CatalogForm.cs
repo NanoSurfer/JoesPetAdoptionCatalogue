@@ -19,6 +19,7 @@ namespace JoesPetShop
 
         int catCount = 5;
         int dogCount = 6;
+
         public CatalogForm()
         {
             InitializeComponent();
@@ -26,6 +27,8 @@ namespace JoesPetShop
 
         private void CatalogForm_Load(object sender, EventArgs e)
         {
+            btnNext.Enabled = true;
+            btnNext2.Enabled = true;
             try
             {
                 // Deserialize the lists from the file and build my arrayList object
@@ -54,9 +57,9 @@ namespace JoesPetShop
                 txtBxDogCatagory.Text = dogData[5].ToString();
 
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException)
             {
-                MessageBox.Show("Could not find the specified file: " + "(" + ex.Message + ")");
+                MessageBox.Show("There is no data");
             }
             catch (InvalidDataException ex)
             {
@@ -79,22 +82,19 @@ namespace JoesPetShop
             {
                 catCount = 0;
             }
-            //Cat
-            txtBxCatName.Text = catData[catCount].ToString();
-            catCount++;
-            txtBxCatAge.Text = catData[catCount].ToString();
-            catCount++;
-            txtBxCatGender.Text = catData[catCount].ToString();
-            catCount++;
-            txtBxCatColor.Text = catData[catCount].ToString();
-            catCount++;
-            txtBxCatBreed.Text = catData[catCount].ToString();
-            catCount++;
-
-            if (catCount >= catData.Count)
+            try
             {
-                MessageBox.Show("No more records");
-                btnNext2.Enabled = false;
+                addCatDetails();
+
+                if (catCount >= catData.Count)
+                {
+                    MessageBox.Show("No more records");
+                    btnNext2.Enabled = false;
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("There is no data to display");
             }
         }
 
@@ -109,21 +109,67 @@ namespace JoesPetShop
                 btnBack2.Enabled = false;
                 catCount = 0;
             }
-            txtBxCatName.Text = catData[catCount].ToString();
-            catCount++;
-            txtBxCatAge.Text = catData[catCount].ToString();
-            catCount++;
-            txtBxCatGender.Text = catData[catCount].ToString();
-            catCount++;
-            txtBxCatColor.Text = catData[catCount].ToString();
-            catCount++;
-            txtBxCatBreed.Text = catData[catCount].ToString();
-            catCount++;
+            try
+            {
+                addCatDetails();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("There is no data to display");
+            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            btnBack.Enabled = true;
+            btnBack2.Enabled = true;
+
+            if (dogCount == dogData.Count)
+            {
+                dogCount = 0;
+            }
+
+            try
+            {
+                btnBack.Enabled = true;
+
+                addDogDetails();
+
+                if (dogCount >= dogData.Count)
+                {
+                    MessageBox.Show("No more records");
+                    btnNext.Enabled = false;
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("There is no data to display");
+            }
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            btnNext.Enabled = true;
+
+            dogCount = dogCount - 12;
+            if (dogCount < 0)
+            {
+                MessageBox.Show("No more records");
+                btnBack.Enabled = false;
+                dogCount = 0;
+            }
+            try
+            {
+                addDogDetails();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("There is no data to display");
+            }
+        }
+
+        private void addDogDetails()
+        {
             //Dog
             txtBxDogName.Text = dogData[dogCount].ToString();
             dogCount++;
@@ -137,12 +183,21 @@ namespace JoesPetShop
             dogCount++;
             txtBxDogCatagory.Text = dogData[dogCount].ToString();
             dogCount++;
+        }
 
-            if (dogCount >= dogData.Count)
-            {
-                MessageBox.Show("No more records");
-                btnNext.Enabled = false;
-            }
+        private void addCatDetails()
+        {
+            //Cat
+            txtBxCatName.Text = catData[catCount].ToString();
+            catCount++;
+            txtBxCatAge.Text = catData[catCount].ToString();
+            catCount++;
+            txtBxCatGender.Text = catData[catCount].ToString();
+            catCount++;
+            txtBxCatColor.Text = catData[catCount].ToString();
+            catCount++;
+            txtBxCatBreed.Text = catData[catCount].ToString();
+            catCount++;
         }
     }
 }

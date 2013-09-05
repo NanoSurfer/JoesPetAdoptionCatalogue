@@ -190,6 +190,7 @@
             this.btnCats.TabIndex = 1;
             this.btnCats.Text = "Cats";
             this.btnCats.UseVisualStyleBackColor = true;
+            this.btnCats.Click += new System.EventHandler(this.btnCats_Click);
             // 
             // btnDogs
             // 
@@ -199,6 +200,7 @@
             this.btnDogs.TabIndex = 0;
             this.btnDogs.Text = "Dogs";
             this.btnDogs.UseVisualStyleBackColor = true;
+            this.btnDogs.Click += new System.EventHandler(this.btnDogs_Click);
             // 
             // panel1
             // 

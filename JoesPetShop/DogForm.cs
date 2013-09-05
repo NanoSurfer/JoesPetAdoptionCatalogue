@@ -14,9 +14,10 @@ namespace JoesPetShop
 {
     public partial class DogForm : Form
     {
-        //Variable for the ArrayList cat object
+        //Variable for the ArrayList dog object
         public ArrayList dogList = new ArrayList();
 
+        //variable for the binary animal file
         const String filename = "Animal.dat";
 
         public DogForm()
@@ -182,11 +183,29 @@ namespace JoesPetShop
             }
             else if (dialogResult == DialogResult.No)
             {
+                ArrayList dogData = new ArrayList();
+
                 // Serialize the arraylist to a binary file 
                 var serializer = new BinaryFormatter();
-                using (var stream = File.OpenWrite("dogData.dat"))
+                try
                 {
-                    serializer.Serialize(stream, dogList);
+                    using (var stream = File.OpenRead("dogData.dat"))
+                    {
+                        dogData = (ArrayList)serializer.Deserialize(stream);
+                        dogList.Add(dogData);
+                    }
+
+                    using (var stream = File.OpenWrite("dogData.dat"))
+                    {
+                        serializer.Serialize(stream, dogList);
+                    }
+                }
+                catch (FileNotFoundException)
+                {
+                    using (var stream = File.OpenWrite("dogData.dat"))
+                    {
+                        serializer.Serialize(stream, dogList);
+                    }
                 }
                 this.Hide();
             }

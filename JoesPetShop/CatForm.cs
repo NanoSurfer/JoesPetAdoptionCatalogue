@@ -39,11 +39,11 @@ namespace JoesPetShop
             // Set up the ToolTip for the txtBxColor control.
             myTip.IsBalloon = true;
             myTip.SetToolTip(this.txtBxColor, "Please enter a color which best\n matches the discription of the Cat.\n\n" +
-                "eg: Brown, grey, brownish grey etc...");       
+                "eg: Brown, grey, brownish grey etc...");
         }
 
         private void CatForm_Load(object sender, EventArgs e)
-        { 
+        {
         }
 
         private void chkBxPureBreed_CheckedChanged(object sender, EventArgs e)
@@ -158,12 +158,38 @@ namespace JoesPetShop
                 binWriter.Close(); // Close the writer
                 filStream.Close(); //Close the reader
 
-                ////Add items to the arrayList
-                catList.Add(aCat.Name);
-                catList.Add(aCat.Age);
-                catList.Add(aCat.Gender);
-                catList.Add(aCat.Color);
-                catList.Add(aCat.Breed);
+                //Write immediately to the text files for the reports
+                if (!File.Exists("catReport.txt"))
+                {
+                    StreamWriter file = new StreamWriter("catReport.txt");
+
+                    ////Add items to the arrayList while im at it
+                    catList.Add(aCat.Name);
+                    catList.Add(aCat.Age);
+                    catList.Add(aCat.Gender);
+                    catList.Add(aCat.Color);
+                    catList.Add(aCat.Breed);
+
+                    file.WriteLine(aCat.ToString());
+
+                    //close the file
+                    file.Close();
+                }
+
+                using (StreamWriter sw = File.AppendText("catReport.txt"))
+                {
+                    ////Add items to the arrayList while im at it
+                    catList.Add(aCat.Name);
+                    catList.Add(aCat.Age);
+                    catList.Add(aCat.Gender);
+                    catList.Add(aCat.Color);
+                    catList.Add(aCat.Breed);
+
+                    sw.WriteLine(aCat.ToString());
+
+                    //close the file
+                    sw.Close();
+                }
             }
 
             //If an error arises, catch it
@@ -181,12 +207,32 @@ namespace JoesPetShop
             }
             else if (dialogResult == DialogResult.No)
             {
+                ArrayList catData = new ArrayList();
+
                 // Serialize the arraylist to a binary file 
                 var serializer = new BinaryFormatter();
-                using (var stream = File.OpenWrite("catData.dat"))
+                try
                 {
-                    serializer.Serialize(stream, catList);
+                    using (var stream = File.OpenRead("catData.dat"))
+                    {
+                        catData = (ArrayList)serializer.Deserialize(stream);
+                        
+                    }
+
+                    using (var stream = File.OpenWrite("catData.dat"))
+                    {
+                        serializer.Serialize(stream, catList);
+                    }
+
                 }
+                catch (FileNotFoundException)
+                {
+                    using (var stream = File.OpenWrite("catData.dat"))
+                    {
+                        serializer.Serialize(stream, catList);
+                    }
+                }
+        
                 this.Hide();
             }
 
@@ -197,7 +243,7 @@ namespace JoesPetShop
             cmbBxBreed.SelectedIndex = -1;
             rbFemale.Checked = false;
             rbMale.Checked = false;
-            chkBxPureBreed.Checked = false;   
+            chkBxPureBreed.Checked = false;
         }
     }
 }
